@@ -1,51 +1,14 @@
-**********
-* P600FW *
-**********
+~~~~~~~~~~~~~~~~~~~~~~
+ P600FW  + NOISE WAVEFORM 
+^^^^^^^^^^^^^^^^^^^^^^
+This project add Noise waveform to Prophet600 with Teensy+ and GliGli's firmware upgade.
 
-Project web page now located there: (downloads, demos, etc.)
+If you looking for GliGli's p600fw project 
+Go to  https://github.com/gligli/p600fw
 
---> http://gligli.github.io/p600fw/ <--
+This project needs hardware modification of Prophet 600.
 
-
-Description
-===========
-
-This is the P600FW project, a CPU/firmware remake for the SCI Prophet 600 (http://www.vintagesynth.com/sci/p600.php).
-It uses a slightly modified Teensy++ board (http://www.pjrc.com/store/teensypp_pins.html) that plugs into the Z80 socket.
-
-Installation and usage
-======================
-
-See documentation...
-
-Compiling the Firmware
-======================
-
-Requirements:
-- AVR-GCC cross-compiler (e.g. on Windows: "MHV_AVR_Tools_20121007", on Mac: "CrossPack for AVR")
-- "Teensy Loader" for flashing the compiled firmware to the physical device (http://www.pjrc.com/teensy/loader.html)
-
-> cd firmware
-> make
-
-This will produce p600firmware.hex, which you can flash onto your Teensy++ using the Teensy Loader.
-
-History
-=======
-
-- Alpha 20130226 : First public version.
-- Beta 1.0 : First proper release.
-- Stable 2.0 :
-	- New user interface (moved all the membrane keypad options to: hit a button once or twice / turn the "Speed" data pot).
-	- Assigner rework (better priority system; unison track latch; disabling voices).
-	- MIDI out / SysEx patch dumps.
-	- Synchronizing the Arpeggiator to MIDI clock.
-	- Unison detune.
-	- Dedicated vibrato (independent from the LFO).
-	- Automatic modulation after a delay.
-	- Many bug fixes and tweaks.
 
 License
 =======
-
 Everything is under GPL v3 license, except files that have their own license in the header.

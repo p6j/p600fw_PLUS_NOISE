@@ -556,6 +556,10 @@ static void refreshSevenSeg(void)
 	
 }
 
+static void refreshNoiseLevel(void){ //for Noise
+		sh_setCV(pcExtFil,currentPreset.continuousParameters[cpNoiseLevel],SH_FLAG_IMMEDIATE); 
+}
+
 void refreshFullState(void)
 {
 	refreshModulationDelay(1);
@@ -564,7 +568,7 @@ void refreshFullState(void)
 	refreshLfoSettings();
 	refreshEnvSettings();
 	computeBenderCVs();
-	
+
 	refreshSevenSeg();
 }
 
@@ -572,12 +576,13 @@ static void refreshPresetPots(int8_t force)
 {
 	continuousParameter_t cp;
 	
-	for(cp=0;cp<cpCount;++cp)
+	for(cp=0;cp<(cpCount-1);++cp)// -1  for Noise. add 1 element [cpNoiselevel] in strage.h, [enum continuousParameter_t]
 		if((continuousParameterToPot[cp]!=ppNone) && (force || continuousParameterToPot[cp]==ui.lastActivePot || potmux_hasChanged(continuousParameterToPot[cp])))
 		{
 			currentPreset.continuousParameters[cp]=potmux_getValue(continuousParameterToPot[cp]);
 			ui.presetModified=1;
 		}
+	refreshNoiseLevel();// for Noise
 }
 
 void refreshPresetMode(void)
@@ -693,6 +698,8 @@ void synth_init(void)
 	ui_init();
 	midi_init();
 	
+	sh_setCV(pcExtFil,0,SH_FLAG_IMMEDIATE); //for NOISE stop Noise waveform.
+	
 	for(i=0;i<SYNTH_VOICE_COUNT;++i)
 	{
 		adsr_init(&synth.ampEnvs[i]);
@@ -735,7 +742,8 @@ void synth_init(void)
 	
 	// a nice welcome message, and we're ready to go :)
 	
-	sevenSeg_scrollText("GliGli's P600 upgrade "VERSION,1);
+	sevenSeg_scrollText("GliGli's P600 upgrade noise "VERSION,1); //for Noise
+
 }
 
 void synth_update(void)
@@ -796,7 +804,8 @@ void synth_update(void)
 		
 		sh_setCV(pcPModOscB,currentPreset.continuousParameters[cpPModOscB],SH_FLAG_IMMEDIATE);
 		sh_setCV(pcResonance,currentPreset.continuousParameters[cpResonance],SH_FLAG_IMMEDIATE);
-		sh_setCV(pcExtFil,24576,SH_FLAG_IMMEDIATE); // value from the emulator
+		//sh_setCV(pcExtFil,24576,SH_FLAG_IMMEDIATE); // value from the emulator  // rem for Noise
+		
 		break;
 	case 2:
 		// 'fixed' CVs

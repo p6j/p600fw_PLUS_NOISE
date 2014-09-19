@@ -23,6 +23,7 @@ typedef enum
 	cpVibFreq=26,cpVibAmt=27,
 	cpUnisonDetune=28,
 	cpSeqArpClock=29,
+	cpNoiseLevel=30, // for Noise 
 
 	// /!\ this must stay last
 	cpCount

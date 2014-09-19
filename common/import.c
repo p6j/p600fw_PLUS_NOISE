@@ -111,6 +111,8 @@ LOWERCODESIZE void import_sysex(uint8_t * buf, int16_t size)
 	p.continuousParameters[cpGlide]=(zp->glide)?(0xc000+(zp->glide<<10)):0;
 	p.continuousParameters[cpAmpVelocity]=0;
 	p.continuousParameters[cpFilVelocity]=0;
+	p.continuousParameters[cpNoiseLevel]=0;// for Noise
+	
 
 	p.steppedParameters[spASaw]=zp->sawA;
 	p.steppedParameters[spATri]=zp->triA;

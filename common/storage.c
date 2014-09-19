@@ -316,7 +316,7 @@ LOWERCODESIZE int8_t preset_loadCurrent(uint16_t number)
 
 		// v2
 
-		for(cp=cpModDelay;cp<=cpSeqArpClock;++cp)
+		for(cp=cpModDelay;cp<=cpNoiseLevel;++cp) // for Noise
 			currentPreset.continuousParameters[cp]=storageRead16();
 
 		for(sp=spModwheelTarget;sp<=spVibTarget;++sp)
@@ -349,7 +349,7 @@ LOWERCODESIZE void preset_saveCurrent(uint16_t number)
 		
 		// v2
 		
-		for(cp=cpModDelay;cp<=cpSeqArpClock;++cp)
+		for(cp=cpModDelay;cp<=cpNoiseLevel;++cp)//for Noise
 			storageWrite16(currentPreset.continuousParameters[cp]);
 
 		for(sp=spModwheelTarget;sp<=spVibTarget;++sp)
@@ -409,6 +409,8 @@ LOWERCODESIZE void preset_loadDefault(int8_t makeSound)
 		currentPreset.continuousParameters[cpAmpVelocity]=UINT16_MAX/2;
 		currentPreset.continuousParameters[cpSeqArpClock]=UINT16_MAX/2;
 		currentPreset.continuousParameters[cpVibFreq]=UINT16_MAX/2;
+		currentPreset.continuousParameters[cpNoiseLevel]=0;// for Noise
+		
 
 		currentPreset.steppedParameters[spBenderSemitones]=5;
 		currentPreset.steppedParameters[spBenderTarget]=modVCO;
