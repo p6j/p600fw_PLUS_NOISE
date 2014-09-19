@@ -557,7 +557,7 @@ static void refreshSevenSeg(void)
 }
 
 static void refreshNoiseLevel(void){ //for Noise
-		sh_setCV(pcExtFil,currentPreset.continuousParameters[cpNoiseLevel],SH_FLAG_IMMEDIATE); 
+		sh_setCV(pcExtFil,currentPreset.continuousParameters[cpNoiseLevel] / 3,SH_FLAG_IMMEDIATE); 
 }
 
 void refreshFullState(void)

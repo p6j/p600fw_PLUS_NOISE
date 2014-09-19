@@ -24,7 +24,7 @@ const struct uiParam_s uiParameters[] =
 	/*8*/ {.type=ptCont,.number=cpUnisonDetune,.name="detune"},
 	/*9*/ {.type=ptCont,.number=cpAmpVelocity,.name="amp Velo"},
 	/*second press*/
-	/*0*/ {.type=ptCont,.number=cpNoiseLevel,.name="noise"},
+	/*0*/ {.type=ptCont,.number=cpNoiseLevel,.name="noise"}, // for Noise
 	/*1*/ {.type=ptCust,.number=1,.name="lfo tgt",.values={"ab","a","b"}},
 	/*2*/ {.type=ptStep,.number=spLFOShift,.name="lfo range",.values={"low","high"}},
 	/*3*/ {.type=ptCust,.number=5,.name="mod range",.values={"min","low","high","full"}},
